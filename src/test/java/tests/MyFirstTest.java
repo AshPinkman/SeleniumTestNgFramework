@@ -33,7 +33,7 @@ public final class MyFirstTest extends BaseTest {
         Assert.assertEquals(storePage.getTitle(), "Search results: “Blue”");
         CartPage cartPage = storePage.clickAddToCartBtn(product.getName()).clickViewCart();
         Assert.assertEquals(cartPage.getProductName(), product.getName());
-        CheckoutPage checkoutPage = cartPage.clickCheckoutBtn().setBillingAddress(billingAddress).clickPlaceOrde();
+        CheckoutPage checkoutPage = cartPage.clickCheckoutBtn().setBillingAddress(billingAddress).clickPlaceOrd();
 
 
         Assert.assertEquals(checkoutPage.getNotice(),
