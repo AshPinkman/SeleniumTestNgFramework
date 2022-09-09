@@ -1,4 +1,4 @@
-package api.actions;
+package api;
 
 import objects.User;
 import utils.FakerUtils;

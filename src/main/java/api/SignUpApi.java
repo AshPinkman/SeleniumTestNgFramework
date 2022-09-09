@@ -1,4 +1,4 @@
-package api.actions;
+package api;
 
 import io.restassured.http.Cookies;
 import io.restassured.http.Header;

@@ -1,7 +1,7 @@
 package tests;
 
-import api.actions.CartApi;
-import api.actions.SignUpApi;
+import api.CartApi;
+import api.SignUpApi;
 import base.BaseTest;
 import objects.Product;
 import objects.User;
