@@ -7,7 +7,7 @@
             <package name="tests"/>
         </packages>
     </test>
-    <test verbose="2" preserve-order="true" name="Regression2" >
+    <!--<test verbose="2" preserve-order="true" name="Regression2" >
         <parameter name="browser" value="FIREFOX"></parameter>
         <packages>
             <package name="tests"/>
@@ -18,5 +18,5 @@
         <packages>
             <package name="tests"/>
         </packages>
-    </test>
+    </test>-->
 </suite>
