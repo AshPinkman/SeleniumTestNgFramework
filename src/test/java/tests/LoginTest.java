@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public final class LoginTest extends BaseTest {
 
-    private LoginTest(){
+    private LoginTest() {
 
     }
 
@@ -34,10 +34,14 @@ public final class LoginTest extends BaseTest {
 
         CartApi cartApi = new CartApi();
         cartApi.addToCart(product.getId(), 1);
+
+        CheckoutPage checkoutPage = new CheckoutPage(getDriver()).load();
+
         injectCookiesToBrowser(cartApi.getCookies());
 
-        CheckoutPage checkoutPage = new CheckoutPage(getDriver()).load().
-                clickLoginBtn().login(user);
+        checkoutPage.load();
+
+        checkoutPage.clickShowLogin().login(user);
 
         Assert.assertTrue(checkoutPage.getProductName().contains(product.getName()));
 

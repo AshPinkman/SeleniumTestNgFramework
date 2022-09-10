@@ -21,7 +21,7 @@ public final class MyFirstTest extends BaseTest {
 
     }
 
-    @Test
+    //@Test
     public void guestCheckOutUsingDirectBankTransfer() throws IOException {
 
 
@@ -41,7 +41,7 @@ public final class MyFirstTest extends BaseTest {
 
     }
 
-    @Test
+    //@Test
     public void loginAndCheckOutUsingDirectBankTransfer() throws IOException {
 
         BillingAddress billingAddress = JacksonUtils.deserializeJson("billingAddress.json", BillingAddress.class);
