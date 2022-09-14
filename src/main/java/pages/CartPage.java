@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 
 public class CartPage extends BasePage {
 
-    private final By productName = By.xpath("//a[normalize-space()='Blue Shoes']");
+    private final By productName = By.cssSelector("td[class='product-name']");
     private final By checkoutBtn = By.xpath("//a[@class='checkout-button button alt wc-forward']");
 
     public CartPage(WebDriver driver) {
@@ -15,7 +15,7 @@ public class CartPage extends BasePage {
     }
 
     public String getProductName() {
-        return driver.findElement(productName).getText();
+        return getElement(productName).getText();
     }
 
     public CheckoutPage clickCheckoutBtn() {

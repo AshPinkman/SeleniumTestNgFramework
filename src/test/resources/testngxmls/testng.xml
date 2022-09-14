@@ -13,7 +13,7 @@
             <package name="tests"/>
         </packages>
     </test>-->
-    <test verbose="2" preserve-order="true" name="Regression3" >
+    <test verbose="2" preserve-order="true" name="chrome" thread-count="1" parallel="methods" >
         <parameter name="browser" value="CHROME"></parameter>
         <packages>
             <package name="tests"/>

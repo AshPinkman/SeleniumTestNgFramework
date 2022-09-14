@@ -14,7 +14,6 @@ public class DriverManager {
 
         String localBrowser = System.getProperty("browser", browser);
 
-
         switch (DriverType.valueOf(localBrowser)) {
             case CHROME:
                 WebDriverManager.chromedriver().setup();

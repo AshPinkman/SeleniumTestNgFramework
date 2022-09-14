@@ -28,10 +28,10 @@ public final class MyFirstTest extends BaseTest {
         BillingAddress billingAddress = JacksonUtils.deserializeJson("billingAddress.json", BillingAddress.class);
         Product product = new Product(1215);
 
-        StorePage storePage = new HomePage(getDriver()).load().clickStoreMenuLink();
+        StorePage storePage = new HomePage(getDriver()).load().getHeaderComponent().clickStoreMenuLink();
         storePage.search("Blue");
         Assert.assertEquals(storePage.getTitle(), "Search results: “Blue”");
-        CartPage cartPage = storePage.clickAddToCartBtn(product.getName()).clickViewCart();
+        CartPage cartPage = storePage.getProductComponent().clickAddToCartBtn(product.getName()).clickViewCart();
         Assert.assertEquals(cartPage.getProductName(), product.getName());
         CheckoutPage checkoutPage = cartPage.clickCheckoutBtn().setBillingAddress(billingAddress).clickPlaceOrder();
 
@@ -48,10 +48,10 @@ public final class MyFirstTest extends BaseTest {
         Product product = new Product(1215);
         User user = new User(ConfigLoader.getInstance().getUsername(), ConfigLoader.getInstance().getPassword());
 
-        StorePage storePage = new HomePage(getDriver()).load().clickStoreMenuLink();
+        StorePage storePage = new HomePage(getDriver()).load().getHeaderComponent().clickStoreMenuLink();
         storePage.search("Blue");
         Assert.assertEquals(storePage.getTitle(), "Search results: “Blue”");
-        CartPage cartPage = storePage.clickAddToCartBtn(product.getName()).clickViewCart();
+        CartPage cartPage = storePage.getProductComponent().clickAddToCartBtn(product.getName()).clickViewCart();
         Assert.assertEquals(cartPage.getProductName(), product.getName());
         CheckoutPage checkoutPage = cartPage.clickCheckoutBtn();
         checkoutPage.clickShowLogin().login(user).

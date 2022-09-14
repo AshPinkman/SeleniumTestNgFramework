@@ -29,13 +29,13 @@ public class BaseTest {
 
     @Parameters("browser")
     @BeforeMethod
-    public void initDriver(String browser) {
+    public synchronized void initDriver(String browser) {
         setDriver(new DriverManager().initializeDriver(browser));
         //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @AfterMethod
-    public void quitDriver() {
+    public synchronized void quitDriver() {
         getDriver().quit();
     }
 

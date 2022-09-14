@@ -16,7 +16,7 @@ public final class NavigationTest extends BaseTest {
     public void navigateFromHomeToStoreUsingMainMenu() {
 
         StorePage storePage = new HomePage(getDriver())
-                .load()
+                .load().getHeaderComponent()
                 .clickStoreMenuLink();
         //Assert.assertEquals(storePage.getTitle(), "Store");
 

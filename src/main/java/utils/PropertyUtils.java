@@ -6,7 +6,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-public class PropertyUtils {
+public final class PropertyUtils {
+
+    private PropertyUtils() {
+
+    }
 
     public static Properties propertyLoader(String filepath) {
         Properties properties = new Properties();

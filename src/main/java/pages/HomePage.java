@@ -4,22 +4,31 @@ import base.BasePage;
 import enums.WaitStrategy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import pages.components.HeaderComponent;
+import pages.components.ProductComponent;
 
 public class HomePage extends BasePage {
 
+    private HeaderComponent headerComponent;
+    private ProductComponent productComponent;
+
     public HomePage(WebDriver driver) {
         super(driver);
+        headerComponent = new HeaderComponent(driver);
+        productComponent = new ProductComponent(driver);
     }
-
-    private final By storeMenuLink = By.xpath("//li[@id='menu-item-1227']//a[@class='menu-link'][normalize-space()='Store']");
 
     public HomePage load() {
         load("/");
         return this;
     }
 
-    public StorePage clickStoreMenuLink() {
-        click(storeMenuLink, WaitStrategy.CLICKABLE);
-        return new StorePage(driver);
+    public HeaderComponent getHeaderComponent() {
+        return headerComponent;
     }
+
+    public ProductComponent getProductComponent() {
+        return productComponent;
+    }
+
 }

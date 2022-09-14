@@ -10,7 +10,6 @@ public final class JacksonUtils {
     private JacksonUtils() {
 
     }
-
     public static <T> T deserializeJson(String filename, Class<T> T) throws IOException {
         InputStream is = JacksonUtils.class.getClassLoader().getResourceAsStream(filename);
         ObjectMapper objectMapper = new ObjectMapper();
