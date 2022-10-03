@@ -1,37 +1,21 @@
 package driver;
 
-import enums.DriverType;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverManager {
 
-    public WebDriver initializeDriver(String browser) {
-        WebDriver driver;
+    private static ThreadLocal<WebDriver> dr = new ThreadLocal<>();
 
-        String localBrowser = System.getProperty("browser", browser);
-
-        switch (DriverType.valueOf(localBrowser)) {
-            case CHROME:
-                WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver();
-                break;
-            case EDGE:
-                WebDriverManager.edgedriver().setup();
-                driver = new EdgeDriver();
-                break;
-            case FIREFOX:
-                WebDriverManager.firefoxdriver().setup();
-                driver = new FirefoxDriver();
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid browser name");
-
-        }
-        driver.manage().window().maximize();
-        return driver;
+    public static WebDriver getDriver() {
+        return dr.get();
     }
+
+    public static void setDriver(WebDriver driverref) {
+        dr.set(driverref);
+    }
+
+    public static void unload() {
+        dr.remove();
+    }
+
 }

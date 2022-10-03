@@ -5,6 +5,9 @@ import enums.WaitStrategy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pages.CartPage;
+import reports.ExtentLogger;
+import reports.ExtentManager;
+import reports.ExtentReport;
 
 public class ProductComponent extends BasePage {
 
@@ -21,11 +24,13 @@ public class ProductComponent extends BasePage {
     public ProductComponent clickAddToCartBtn(String productName) {
         By addToCartBtn = getAddToCartBtn(productName);
         click(addToCartBtn, WaitStrategy.CLICKABLE);
+        ExtentLogger.pass("Add to cart button clicked");
         return this;
     }
 
     public CartPage clickViewCart() {
         click(viewCartLink, WaitStrategy.CLICKABLE);
+        ExtentLogger.pass("view cart link clicked");
         return new CartPage(driver);
     }
 

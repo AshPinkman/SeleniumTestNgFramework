@@ -3,6 +3,8 @@ package tests;
 import api.CartApi;
 import api.SignUpApi;
 import base.BaseTest;
+import driver.Driver;
+import driver.DriverManager;
 import objects.BillingAddress;
 import objects.Product;
 import objects.User;
@@ -23,7 +25,7 @@ public final class CheckoutTest extends BaseTest {
     @Test
     public void guestCheckoutUsingDirectBankTransfer() throws IOException {
         BillingAddress billingAddress = JacksonUtils.deserializeJson("billingAddress.json", BillingAddress.class);
-        CheckoutPage checkoutPage = new CheckoutPage(getDriver()).load();
+        CheckoutPage checkoutPage = new CheckoutPage(DriverManager.getDriver()).load();
 
         CartApi cartApi = new CartApi();
         cartApi.addToCart(1215, 1);
@@ -53,7 +55,7 @@ public final class CheckoutTest extends BaseTest {
         CartApi cartApi = new CartApi(signUpApi.getCookies());
         cartApi.addToCart(product.getId(), 1);
 
-        CheckoutPage checkoutPage = new CheckoutPage(getDriver()).load();
+        CheckoutPage checkoutPage = new CheckoutPage(DriverManager.getDriver()).load();
         injectCookiesToBrowser(signUpApi.getCookies());
         checkoutPage.load().
                 setBillingAddress(billingAddress).

@@ -1,6 +1,8 @@
 package tests;
 
 import base.BaseTest;
+import driver.Driver;
+import driver.DriverManager;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
@@ -15,7 +17,7 @@ public final class NavigationTest extends BaseTest {
     @Test
     public void navigateFromHomeToStoreUsingMainMenu() {
 
-        StorePage storePage = new HomePage(getDriver())
+        StorePage storePage = new HomePage(DriverManager.getDriver())
                 .load().getHeaderComponent()
                 .clickStoreMenuLink();
         //Assert.assertEquals(storePage.getTitle(), "Store");

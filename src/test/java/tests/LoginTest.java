@@ -3,6 +3,8 @@ package tests;
 import api.CartApi;
 import api.SignUpApi;
 import base.BaseTest;
+import driver.Driver;
+import driver.DriverManager;
 import objects.Product;
 import objects.User;
 import org.testng.Assert;
@@ -35,7 +37,7 @@ public final class LoginTest extends BaseTest {
         CartApi cartApi = new CartApi();
         cartApi.addToCart(product.getId(), 1);
 
-        CheckoutPage checkoutPage = new CheckoutPage(getDriver()).load();
+        CheckoutPage checkoutPage = new CheckoutPage(DriverManager.getDriver()).load();
 
         injectCookiesToBrowser(cartApi.getCookies());
 
