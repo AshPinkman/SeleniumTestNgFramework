@@ -18,20 +18,25 @@ public final class ExplicitWaitFactory {
     public static void performExplicitWait(WaitStrategy waitStrategy, By by, WebDriver driver) {
 
 
-        if (waitStrategy == WaitStrategy.CLICKABLE) {
-            new WebDriverWait(driver, Duration.ofSeconds(ConfigLoader.getInstance().getTimeout()))
-                    .until(ExpectedConditions.elementToBeClickable(by));
-        } else if (waitStrategy == WaitStrategy.PRESENCE) {
-            new WebDriverWait(driver, Duration.ofSeconds(ConfigLoader.getInstance().getTimeout()))
-                    .until(ExpectedConditions.presenceOfElementLocated(by));
-        } else if (waitStrategy == WaitStrategy.VISIBLE) {
-            new WebDriverWait(driver, Duration.ofSeconds(ConfigLoader.getInstance().getTimeout()))
-                    .until(ExpectedConditions.visibilityOfElementLocated(by));
-        } else if (waitStrategy == WaitStrategy.INVISIBLE) {
-            new WebDriverWait(driver, Duration.ofSeconds(ConfigLoader.getInstance().getTimeout()))
-                    .until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(by)));
-        } else {
-            System.out.println("No Wait Strategy");
+        switch (waitStrategy) {
+            case CLICKABLE:
+                new WebDriverWait(driver, Duration.ofSeconds(ConfigLoader.getInstance().getTimeout()))
+                        .until(ExpectedConditions.elementToBeClickable(by));
+                break;
+            case PRESENCE:
+                new WebDriverWait(driver, Duration.ofSeconds(ConfigLoader.getInstance().getTimeout()))
+                        .until(ExpectedConditions.presenceOfElementLocated(by));
+                break;
+            case VISIBLE:
+                new WebDriverWait(driver, Duration.ofSeconds(ConfigLoader.getInstance().getTimeout()))
+                        .until(ExpectedConditions.visibilityOfElementLocated(by));
+                break;
+            case INVISIBLE:
+                new WebDriverWait(driver, Duration.ofSeconds(ConfigLoader.getInstance().getTimeout()))
+                        .until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(by)));
+                break;
+            default:
+                break;
         }
 
     }
