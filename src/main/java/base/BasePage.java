@@ -43,11 +43,6 @@ public class BasePage {
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", driver.findElement(by));
     }
 
-    protected void actionClick(By by, WaitStrategy waitStrategy) {
-        ExplicitWaitFactory.performExplicitWait(waitStrategy, by, driver);
-        Actions actions = new Actions(driver);
-        actions.moveToElement(driver.findElement(by)).click().perform();
-    }
 
     protected WebElement getElement(By by) {
         return driver.findElement(by);

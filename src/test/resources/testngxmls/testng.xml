@@ -18,8 +18,8 @@
     </test>-->
     <test verbose="2" preserve-order="true" name="chrome" thread-count="1">
         <parameter name="browser" value="CHROME"></parameter>
-        <packages>
-            <package name="tests"></package>
-        </packages>
+      <classes>
+          <class name="tests.AddToCartTest"></class>
+      </classes>
     </test>
 </suite>
